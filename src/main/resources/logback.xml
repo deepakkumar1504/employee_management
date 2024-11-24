@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!--<property name="LOG_ROOT" value="c:/temp/logs" />
+	<property name="LOG_FILE_NAME" value="application" />-->
+	<appender name="Console"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>
+				%d|%-5p|%t|${active_profile}|${log.file.name}|${PID}|%X{logCorrelationId}|%logger{5}|%mdc|%m%n
+			</Pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logs.dir}/${log.file.name}.log</file>
+
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${logs.dir}/${log.file.name}-%d{yyyy-MM-dd}.%i.log.gz
+			</fileNamePattern>
+			<maxFileSize>100kb</maxFileSize>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+
+		<encoder
+			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>
+				%d|%-5p|%t|${active_profile}|${log.file.name}|${PID}|%X{logCorrelationId}|%logger{5}|%mdc|%m%n
+			</pattern>
+		</encoder>
+
+	</appender>
+
+	<appender name="ERROR_FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logs.dir}/${log.file.name}.error</file>
+
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${logs.dir}/${log.file.name}.error.%d{yyyy-MM-dd}.%i.gz
+			</fileNamePattern>
+			<maxFileSize>100kb</maxFileSize>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+
+		<encoder
+			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>
+				%d|%-5p|%t|${active_profile}|${log.file.name}|${PID}|%X{logCorrelationId}|%logger{5}|%mdc|%m%n
+			</pattern>
+		</encoder>
+
+	</appender>
+
+	<springProfile name="!local">
+		<root level="Error">
+			<appender-ref ref="FILE" />
+		</root>
+		<root level="INFO">
+			<appender-ref ref="FILE" />
+		</root>
+
+	</springProfile>
+
+	<springProfile name="local">
+		<root level="ERROR">
+			<appender-ref ref="FILE" />
+		</root>
+		<root level="INFO">
+			<!--<appender-ref ref="FILE" /> -->
+			<appender-ref ref="Console" />
+			<appender-ref ref="ERROR_FILE" />
+		</root>
+	</springProfile>
+
+</configuration>
