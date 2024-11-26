@@ -25,7 +25,6 @@ public class EmployeeController {
 		logger.info("An INFO Message");
 		logger.warn("A WARN Message");
 		logger.error("An ERROR Message");
-		
 		//trace->debug->info->warn->error
 		System.out.println("welcome in home");
 		return "Welcome to home";

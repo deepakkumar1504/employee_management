@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<!--<property name="LOG_ROOT" value="c:/temp/logs" />
-	<property name="LOG_FILE_NAME" value="application" />-->
+
 	<appender name="Console"
 		class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
@@ -59,6 +58,11 @@
 		</root>
 		<root level="INFO">
 			<appender-ref ref="FILE" />
+		</root>
+		<root level="INFO">
+			<!--<appender-ref ref="FILE" /> -->
+			<appender-ref ref="Console" />
+			<appender-ref ref="ERROR_FILE" />
 		</root>
 
 	</springProfile>
