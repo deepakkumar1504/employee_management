@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
+<!---Dlogs.dir="/Users/deepakkumar/Documents/testing"
+-Dlog.file.name=employee_management-->
 	<appender name="Console"
 		class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
@@ -50,29 +51,25 @@
 			</pattern>
 		</encoder>
 
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+
 	</appender>
 
 	<springProfile name="!local">
-		<root level="Error">
-			<appender-ref ref="FILE" />
-		</root>
 		<root level="INFO">
 			<appender-ref ref="FILE" />
-		</root>
-		<root level="INFO">
-			<!--<appender-ref ref="FILE" /> -->
-			<appender-ref ref="Console" />
+			<!--<appender-ref ref="Console" />-->
 			<appender-ref ref="ERROR_FILE" />
 		</root>
-
 	</springProfile>
 
 	<springProfile name="local">
-		<root level="ERROR">
-			<appender-ref ref="FILE" />
-		</root>
 		<root level="INFO">
-			<!--<appender-ref ref="FILE" /> -->
+			<appender-ref ref="FILE" />
 			<appender-ref ref="Console" />
 			<appender-ref ref="ERROR_FILE" />
 		</root>
