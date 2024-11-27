@@ -4,7 +4,6 @@ import com.employeemanagement.model.Employee;
 
 public interface EmployeeService {
 
-	public Employee saveEmployee(Employee employee);
-	
+	Employee saveEmployee(Employee employee);
 	
 }

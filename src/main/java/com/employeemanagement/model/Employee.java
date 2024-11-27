@@ -1,6 +1,8 @@
 package com.employeemanagement.model;
 
 import java.io.Serializable;
+import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,12 +27,15 @@ public class Employee implements Serializable {
 	private long mobile_number;
 	private String address;
 
+	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-mm-yyyy")
+	private Date dateOfJoining;
+
 	public Employee() {
 		super();
 	}
 
 	public Employee(Integer id, String employee_name, String email, int age, String gender, double salary,
-			long mobile_number, String address) {
+			long mobile_number, String address, Date dateOfJoining) {
 		super();
 		this.id = id;
 		this.employee_name = employee_name;
@@ -40,6 +45,7 @@ public class Employee implements Serializable {
 		this.salary = salary;
 		this.mobile_number = mobile_number;
 		this.address = address;
+		this.dateOfJoining = dateOfJoining;
 	}
 
 	public Integer getId() {
@@ -106,12 +112,19 @@ public class Employee implements Serializable {
 		this.address = address;
 	}
 
+	public Date getDateOfJoining() {
+		return dateOfJoining;
+	}
+
+	public void setDateOfJoining(Date dateOfJoining) {
+		this.dateOfJoining = dateOfJoining;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", employee_name=" + employee_name + ", email=" + email + ", age=" + age
 				+ ", gender=" + gender + ", salary=" + salary + ", mobile_number=" + mobile_number + ", address="
-				+ address + "]";
+				+ address + ", dateOfJoining=" + dateOfJoining + "]";
 	}
 
-	
 }
