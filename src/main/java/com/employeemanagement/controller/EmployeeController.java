@@ -33,6 +33,13 @@ public class EmployeeController {
 		return "Getting response from getLogger";
 	}
 
+	@GetMapping(path = "/get-employee")
+	public String getEmployee() {
+		System.out.println("In get employee method");
+		throw new NullPointerException("throwing null pointer exception");
+	}
+
+	
 	@PostMapping("/employee")
 	public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee) {
 		logger.info("saving employee");
