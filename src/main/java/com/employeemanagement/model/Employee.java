@@ -27,7 +27,7 @@ public class Employee implements Serializable {
 	private long mobile_number;
 	private String address;
 
-	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-mm-yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-mm-yyyy")
 	private Date dateOfJoining;
 
 	public Employee() {

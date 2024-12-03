@@ -2,5 +2,6 @@ package com.employeemanagement.constant;
 
 public interface ApplicationConstants {
 
-	public static final String url = "URL";
+	String ROOT_PATH = "/api/v1";
+	
 }
