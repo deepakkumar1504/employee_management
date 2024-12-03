@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.employeemanagement.constant.ApplicationConstants;
 import com.employeemanagement.model.Employee;
 import com.employeemanagement.service.EmployeeService;
 import static com.employeemanagement.constant.ApplicationConstants.ROOT_PATH;
