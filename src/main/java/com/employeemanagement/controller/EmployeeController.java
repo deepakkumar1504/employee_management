@@ -1,5 +1,8 @@
 package com.employeemanagement.controller;
 
+import com.employeemanagement.exception.ApiError;
+import com.employeemanagement.exception.ApiRuntimeException;
+import com.employeemanagement.exception.ErrorMessages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +39,7 @@ public class EmployeeController {
 	@GetMapping(path = "/get-employee")
 	public String getEmployee() {
 		System.out.println("In get employee method");
-		throw new NullPointerException("throwing null pointer exception");
+		throw  ApiRuntimeException.badRequest(new ApiError(ErrorMessages.HTTP_MESSAGE_NOT_READABLE));
 	}
 
 	
